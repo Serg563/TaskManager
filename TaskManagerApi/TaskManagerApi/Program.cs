@@ -60,6 +60,7 @@ var app = builder.Build();
 
 
 app.UseSerilogRequestLogging();
+app.UseCors(q => q.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
