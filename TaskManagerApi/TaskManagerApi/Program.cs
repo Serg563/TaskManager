@@ -42,7 +42,7 @@ builder.Services.AddAuthentication(x =>
 {
     x.RequireHttpsMetadata = false;
     x.SaveToken = true;
-    x.Authority = "https://localhost:7112/";
+    x.Authority = "https://localhost:7240/";
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
@@ -56,12 +56,13 @@ builder.Host.UseSerilog((hostContext, services, configuration) =>
     configuration.ReadFrom.Configuration(hostContext.Configuration);
 });
 
+
+
 var app = builder.Build();
 
 
 app.UseSerilogRequestLogging();
 app.UseCors(q => q.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
