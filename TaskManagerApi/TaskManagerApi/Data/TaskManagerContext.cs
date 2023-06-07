@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TaskManagerApi.Entities;
 
 namespace TaskManagerApi.Data
 {
@@ -9,7 +11,9 @@ namespace TaskManagerApi.Data
         {
 
         }
+       
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<DevTask> DevTasks { get; set; }
     }
 }

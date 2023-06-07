@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TaskManagerApi.Data
+namespace TaskManagerApi.Entities
 {
     public class ApplicationUser : IdentityUser
     {

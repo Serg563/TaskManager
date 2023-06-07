@@ -1,4 +1,4 @@
-﻿namespace SportsStore.Models
+﻿namespace TaskManagerApi.Models
 {
     public class LoginRequestDTO
     {

@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
-using SportsStore.Models;
+using TaskManagerApi.Models;
 using System.Text;
 using TaskManagerApi.Data;
+using TaskManagerApi.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +16,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    // Other Swagger configuration...
 
+    c.MapType<TimeSpan>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "Duration"
+    });
+});
 
 builder.Services.AddDbContext<TaskManagerContext>(option =>
 {

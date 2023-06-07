@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SportsStore.Models;
-using SportsStore;
+using TaskManagerApi.Models;
+using TaskManagerApi;
 using System.Net;
 using TaskManagerApi.Data;
 using AutoMapper;
-using TaskManagerApi.Models;
 using TaskManagerApi.Models.Developer;
+using TaskManagerApi.Entities;
 
 namespace TaskManagerApi.Controllers
 {

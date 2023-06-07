@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using SportsStore.Models;
-using SportsStore;
+using TaskManagerApi.Models;
+using TaskManagerApi;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
 using TaskManagerApi.Data;
 using Microsoft.EntityFrameworkCore;
+using TaskManagerApi.Entities;
 
 namespace TaskManagerApi.Controllers
 {

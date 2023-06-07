@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace SportsStore.Models
+namespace TaskManagerApi.Models
 {
     public class ApiResponse
     {

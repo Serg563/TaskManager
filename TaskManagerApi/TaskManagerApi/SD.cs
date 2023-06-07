@@ -1,4 +1,4 @@
-﻿namespace SportsStore
+﻿namespace TaskManagerApi
 {
     public class SD
     {
