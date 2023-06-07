@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { RootState } from "../../Storage/Redux/store";
 import { emptyUserState, setLoggedIn } from "../../Storage/Redux/userAuthSlice";
 import { userModel } from "../../Interfaces";
+import { SD_Roles } from "../../Utility/SD";
 
 function Header() {
   const navigate = useNavigate();
@@ -43,37 +44,39 @@ function Header() {
                   Home
                 </NavLink>
               </li>
+              {userData.role == SD_Roles.ADMIN && (
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Admin Panel
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="/developers">
+                        Developers
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Another action
+                      </a>
+                    </li>
 
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Admin Panel
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Something else here
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              )}
               <div className="d-flex" style={{ margin: "auto" }}></div>
+
               {userData.email && (
                 <>
                   <li className="nav-item">

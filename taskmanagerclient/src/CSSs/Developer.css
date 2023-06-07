@@ -1,0 +1,19 @@
+.table-transparent {
+  background-color: transparent;
+  width: 50%;
+  margin: auto;
+}
+.Add-Button {
+  width: 150px;
+}
+
+th {
+  padding: 15px;
+}
+button {
+  margin-top: "7px";
+}
+.td-left-border {
+  border-left: 2px solid white;
+  text-align: center;
+}
