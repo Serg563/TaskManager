@@ -8,6 +8,7 @@ using TaskManagerApi.Data;
 using TaskManagerApi.Entities;
 using TaskManagerApi.Models;
 using TaskManagerApi.Models.DevTask;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskManagerApi.Controllers
 {
@@ -25,12 +26,49 @@ namespace TaskManagerApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("GetDevTasksPagination")]
+        public async Task<IActionResult> GetProductsPagination(int page = 1, int pageSize = 5)
+        {
+            var allproducts = await _context.DevTasks.ToListAsync();
+
+            var totalItems = allproducts.Count();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            var products = allproducts
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var response = new
+            {
+                Products = products,
+                Pagination = new
+                {
+                    Page = page,
+                    PageSize = pageSize,
+                    TotalItems = totalItems,
+                    TotalPages = totalPages
+                }
+            };
+
+            return Ok(response);
+        }
+
         [HttpGet("GetAllDevTask")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAllDevTask()
         {
             return Ok(_context.DevTasks.ToList());
+        }
+
+        [HttpGet("GetAllDevTask/{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllDevTaskByUserId(string userId)
+        {
+            var res = await _context.DevTasks.Where(x => x.UserId == userId).ToListAsync();
+            return Ok(res);
         }
 
         [HttpPost("AddDevTask/{userId}")]
