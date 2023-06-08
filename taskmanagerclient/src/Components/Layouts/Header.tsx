@@ -44,6 +44,11 @@ function Header() {
                   Home
                 </NavLink>
               </li>
+              <li>
+                <NavLink className="nav-link" aria-current="page" to="/tasks">
+                  Tasks
+                </NavLink>
+              </li>
               {userData.role == SD_Roles.ADMIN && (
                 <li className="nav-item dropdown">
                   <a
@@ -59,17 +64,6 @@ function Header() {
                     <li>
                       <a className="dropdown-item" href="/developers">
                         Developers
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
                       </a>
                     </li>
                   </ul>

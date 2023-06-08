@@ -33,8 +33,10 @@ namespace TaskManagerApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _context.ApplicationUsers.ToListAsync();
-            return Ok(users);
+            //var users = await _context.ApplicationUsers.ToListAsync();
+            //return Ok(users);
+            var nonAdminUsers = await _userManager.GetUsersInRoleAsync(SD.Role_Developer);
+            return Ok(nonAdminUsers);
         }
 
         [HttpPost("AddDeveloper")]

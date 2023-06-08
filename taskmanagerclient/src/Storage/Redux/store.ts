@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userAuthReducer } from "./userAuthSlice";
-import { authApi, developerApi } from "../../API";
+import { authApi, developerApi, taskApi } from "../../API";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { userModel } from "../../Interfaces";
@@ -19,6 +19,7 @@ const store = configureStore({
 
     [authApi.reducerPath]: authApi.reducer,
     [developerApi.reducerPath]: developerApi.reducer,
+    [taskApi.reducerPath]: taskApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -26,7 +27,8 @@ const store = configureStore({
       serializableCheck: false,
     })
       .concat(authApi.middleware)
-      .concat(developerApi.middleware),
+      .concat(developerApi.middleware)
+      .concat(taskApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

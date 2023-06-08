@@ -6,11 +6,14 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import GoogleAuthTest2 from "./Pages/GoogleAuthTest2";
 import OAuthTest from "./Pages/OAuthTest";
-import DeveloperList from "./Components/Pages/Developers/DeveloperList";
-import AddDeveloper from "./Components/Pages/Developers/AddDeveloper";
-import UpdateDeveloper from "./Components/Pages/Developers/UpdateDeveloper";
 import developerModel from "./Interfaces/developerModel";
 import Admin from "./Pages/Admin";
+import TaskList from "./Components/Pages/Tasks/TaskList";
+import {
+  AddDeveloper,
+  UpdateDeveloper,
+  ViewDeveloper,
+} from "./Components/Pages/Developers";
 
 function App() {
   return (
@@ -26,6 +29,8 @@ function App() {
           path="/developers/updateDeveloper/:id"
           element={<UpdateDeveloper />}
         ></Route>
+        <Route path="/developers/view/:id" element={<ViewDeveloper />}></Route>
+        <Route path="/tasks" element={<TaskList />}></Route>
       </Routes>
     </>
   );

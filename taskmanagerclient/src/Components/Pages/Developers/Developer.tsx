@@ -3,11 +3,19 @@ import developerModel from "../../../Interfaces/developerModel";
 import "../../../CSSs/Developer.css";
 import { useNavigate } from "react-router-dom";
 import { useDeleteDeveloperMutation } from "../../../API/developerApi";
+import { useSelector } from "react-redux";
+import { userModel } from "../../../Interfaces";
+import { RootState } from "../../../Storage/Redux/store";
+import { SD_Roles } from "../../../Utility/SD";
 
 const Developer: React.FC<{
   dev: developerModel;
   onDelete: (id: string) => void;
-}> = ({ dev, onDelete }) => {
+  onView: (id: string) => void;
+}> = ({ dev, onDelete, onView }) => {
+  const userData: userModel = useSelector(
+    (state: RootState) => state.userAuthStore
+  );
   const navigate = useNavigate();
   const [deleteDev] = useDeleteDeveloperMutation();
   const handleUpdateClick = () => {
@@ -25,6 +33,7 @@ const Developer: React.FC<{
             type="submit"
             className="btn btn-warning"
             onClick={handleUpdateClick}
+            // disabled={userData.role == SD_Roles.ADMIN}
           >
             Update
           </button>
@@ -32,8 +41,16 @@ const Developer: React.FC<{
             type="submit"
             className="btn btn-danger"
             onClick={() => onDelete(dev.id)}
+            // disabled={userData.role == SD_Roles.ADMIN}
           >
             Delete
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => navigate(`/developers/view/${dev.id}`)}
+          >
+            View
           </button>
         </td>
       </tr>

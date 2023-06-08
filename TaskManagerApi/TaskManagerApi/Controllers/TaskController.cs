@@ -62,7 +62,7 @@ namespace TaskManagerApi.Controllers
             return Ok(_context.DevTasks.ToList());
         }
 
-        [HttpGet("GetAllDevTask/{userId}")]
+        [HttpGet("GetAllDevTaskByUserId/{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAllDevTaskByUserId(string userId)

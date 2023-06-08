@@ -30,9 +30,14 @@ function DeveloperList() {
       refetch();
     });
   };
-  const handleUpdateDeveloper = (id: string, developers: developerModel) => {
-    console.log();
+  const handleViewDeveloper = (id: any) => {
+    deleteDev(id).then(() => {
+      refetch();
+    });
   };
+  // const handleUpdateDeveloper = (id: string, developers: developerModel) => {
+  //   console.log();
+  // };
   return (
     <div>
       <table className="table-transparent">
@@ -60,6 +65,7 @@ function DeveloperList() {
               <Developer
                 dev={data}
                 onDelete={handleDeleteDeveloper}
+                onView={handleViewDeveloper}
                 key={data.id}
               />
             </>
