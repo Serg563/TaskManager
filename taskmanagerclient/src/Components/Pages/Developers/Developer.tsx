@@ -23,38 +23,40 @@ const Developer: React.FC<{
   };
 
   return (
-    <tbody>
-      <tr style={{ borderBottom: "2px solid white" }}>
-        <th scope="row">{dev.id}</th>
-        <td className="td-left-border">{dev.userName}</td>
-        <td className="td-left-border">{dev.name}</td>
-        <td>
-          <button
-            type="submit"
-            className="btn btn-warning"
-            onClick={handleUpdateClick}
-            // disabled={userData.role == SD_Roles.ADMIN}
-          >
-            Update
-          </button>
-          <button
-            type="submit"
-            className="btn btn-danger"
-            onClick={() => onDelete(dev.id)}
-            // disabled={userData.role == SD_Roles.ADMIN}
-          >
-            Delete
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={() => navigate(`/developers/view/${dev.id}`)}
-          >
-            View
-          </button>
-        </td>
-      </tr>
-    </tbody>
+    <>
+      <tbody>
+        <tr style={{ borderBottom: "2px solid white" }}>
+          <th scope="row">{dev.id}</th>
+          <td className="td-left-border">{dev.userName}</td>
+          <td className="td-left-border">{dev.name}</td>
+          <td>
+            <button
+              type="submit"
+              className="btn btn-warning"
+              onClick={handleUpdateClick}
+              // disabled={userData.role == SD_Roles.ADMIN}
+            >
+              Update
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger"
+              onClick={() => onDelete(dev.id)}
+              // disabled={userData.role == SD_Roles.ADMIN}
+            >
+              Delete
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={() => navigate(`/developers/view/${dev.id}`)}
+            >
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </>
   );
 };
 

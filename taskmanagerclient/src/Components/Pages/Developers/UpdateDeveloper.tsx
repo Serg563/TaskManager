@@ -58,10 +58,9 @@ function UpdateDeveloper() {
               onChange={handleUserInput}
             />
           </div>
-
           <div className="col-sm-4 offset-sm-3 col-xs-12 mt-4">
             <input
-              type="test"
+              type="text"
               className="form-control"
               placeholder="Enter Name"
               required

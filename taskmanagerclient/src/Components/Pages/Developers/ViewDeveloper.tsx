@@ -28,6 +28,7 @@ function ViewDeveloper() {
         <h2>User Id</h2>
         {id}
       </div>
+      <h2 style={{ float: "right", marginRight: "600px" }}>User Tasks</h2>
       <table
         className="table-transparent"
         style={{ float: "right", marginRight: "300px", width: "600px" }}

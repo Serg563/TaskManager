@@ -26,22 +26,22 @@ namespace TaskManagerApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("GetDevTasksPagination")]
-        public async Task<IActionResult> GetProductsPagination(int page = 1, int pageSize = 5)
+        [HttpGet("GetDevTasksPagination/{userId}")]
+        public async Task<IActionResult> GetDevTasksPagination(string userId, int page = 1, int pageSize = 5)
         {
-            var allproducts = await _context.DevTasks.ToListAsync();
+            var allTasks = await _context.DevTasks.Where(x => x.UserId == userId).ToListAsync();
 
-            var totalItems = allproducts.Count();
+            var totalItems = allTasks.Count();
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
 
-            var products = allproducts
+            var tasks = allTasks
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
             var response = new
             {
-                Products = products,
+                Tasks = tasks,
                 Pagination = new
                 {
                     Page = page,

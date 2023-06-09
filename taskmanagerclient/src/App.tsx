@@ -14,6 +14,8 @@ import {
   UpdateDeveloper,
   ViewDeveloper,
 } from "./Components/Pages/Developers";
+import AddTask from "./Components/Pages/Tasks/AddTask";
+import UpdateTask from "./Components/Pages/Tasks/UpdateTask";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         ></Route>
         <Route path="/developers/view/:id" element={<ViewDeveloper />}></Route>
         <Route path="/tasks" element={<TaskList />}></Route>
+        <Route path="/addTask" element={<AddTask />}></Route>
+        <Route path="/updateTask" element={<UpdateTask />}></Route>
       </Routes>
     </>
   );

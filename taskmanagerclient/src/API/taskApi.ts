@@ -8,8 +8,20 @@ const taskApi = createApi({
 
   endpoints: (builder) => ({
     getDevTasksPagination: builder.query({
-      query: (page = 1, pageSize = 5) => ({
-        url: `GetDevTasksPagination?page=${page}&pageSize=${pageSize}`,
+      query: ({ userId, page = 1, pageSize = 5 }) => ({
+        url: `GetDevTasksPagination/${userId}`,
+        params: {
+          page,
+          pageSize,
+        },
+      }),
+    }),
+    addDevTask: builder.mutation({
+      query: ({ id, task }) => ({
+        url: `AddDevTask/${id}`,
+        method: "POST",
+        header: { "Context-type": "application/json" },
+        body: task,
       }),
     }),
     updateDevTask: builder.mutation({
@@ -25,9 +37,9 @@ const taskApi = createApi({
         url: `GetAllDevTaskByUserId/${id}`,
       }),
     }),
-    deleteDeveloper: builder.mutation({
+    deleteTask: builder.mutation({
       query: (id) => ({
-        url: `DeleteDeveloper/${id}`,
+        url: `DeleteDevTask/${id}`,
         method: "DELETE",
         header: { "Context-type": "application/json" },
       }),
@@ -39,6 +51,7 @@ export const {
   useGetDevTasksPaginationQuery,
   useUpdateDevTaskMutation,
   useGetDevTaskByUserIdQuery,
-  useDeleteDeveloperMutation,
+  useDeleteTaskMutation,
+  useAddDevTaskMutation,
 } = taskApi;
 export default taskApi;
